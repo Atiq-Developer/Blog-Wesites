@@ -51,7 +51,7 @@ export default async function BlogPost({
           />
         </div>
         <p className="ml-3 text-lg italic text-gray-700 dark:text-gray-300">
-          By{" "}
+          By
           <span className="text-[16px] font-semibold">
             Muhammad Atiq Ur Rehman
           </span>
