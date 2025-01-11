@@ -3,6 +3,10 @@ import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import CommentBox from "@/components/comment";
 
+interface BlogPostParams {
+  params: { slug: string };
+}
+
 export async function generateStaticParams() {
   const blogs = await client.fetch(
     `*[_type == "blog"] { "slug": slug.current }`
@@ -10,11 +14,7 @@ export async function generateStaticParams() {
   return blogs.map((blog: { slug: string }) => ({ slug: blog.slug }));
 }
 
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function BlogPost({ params }: BlogPostParams) {
   const { slug } = params;
 
   const blog = await client.fetch(
