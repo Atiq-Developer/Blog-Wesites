@@ -4,14 +4,24 @@ import React from "react";
 import Image from "next/image";
 import client from "@/sanity/lib/client";
 
+interface Blog {
+  title: string;
+  slug: string;
+  image: string;
+  smallDescription: string;
+  content: string;
+  authorName?: string;
+}
+
 const Blog = async () => {
-  const blogs = await client.fetch(
+  const blogs: Blog[] = await client.fetch(
     `*[_type == "blog"] | order(_updatedAt asc) {
       title,
       "slug": slug.current,
       "image": titleImage.asset->url,
       smallDescription,
       content,
+      authorName,
     }`
   );
 
@@ -26,13 +36,16 @@ const Blog = async () => {
           </div>
           <div className="container px-5 mx-auto">
             <div className="flex flex-wrap -m-4">
-              {blogs.map((blog: any, index: any) => (
+              {blogs.map((blog, index) => (
                 <div key={index} className="p-4 md:w-1/3">
                   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg flex flex-col justify-between">
-                    <img
-                      className="lg:h-48 md:h-36 w-full object-cover object-center"
+                    <Image
+                      className="rounded-t-lg"
                       src={blog.image}
                       alt={blog.title}
+                      width={500}
+                      height={300}
+                      layout="responsive"
                     />
                     <div className="p-6 flex-grow">
                       <h3 className="mt-4 text-xl font-semibold text-gray-800 dark:text-gray-200">
@@ -51,11 +64,15 @@ const Blog = async () => {
                         className="rounded-full"
                       />
                       <p className="ml-3 text-lg italic text-gray-700 dark:text-gray-300">
-                        By
+                        By{" "}
                         <span className="text-[16px]">
                           Muhammad Atiq Ur Rehman
                         </span>
-                        <span className="text-[16px]">{blog.authorName}</span>
+                        {blog.authorName && (
+                          <span className="text-[16px]">
+                            , {blog.authorName}
+                          </span>
+                        )}
                       </p>
                     </div>
                     <div className="p-6 pt-1">

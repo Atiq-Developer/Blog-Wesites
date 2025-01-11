@@ -3,21 +3,22 @@ import Image from "next/image";
 export default function About() {
   return (
     <div>
-      <div className="flex flex-col items-center justify-center py-32 bg-gray-100 dark:bg-gray-700 ">
+      <div className="flex flex-col items-center justify-center py-32 bg-gray-100 dark:bg-gray-700">
         <div className="w-full max-w-4xl p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
           <div className="flex flex-col md:flex-row">
-            <div className="w-full md:w-1/3 flex justify-center items-center mb-8 md:mb-0 ">
-              <div className="relative w-48 h-48 rounded-full overflow-hidden ">
+            <div className="w-full md:w-1/3 flex justify-center items-center mb-8 md:mb-0">
+              <div className="relative w-48 h-48 rounded-full overflow-hidden">
                 <Image
                   src="/University.png"
                   alt="Profile"
-                  layout="fill"
+                  fill
                   objectFit="cover"
                   className="rounded-full"
+                  priority
                 />
               </div>
             </div>
-            <div className="w-full md:w-2/3 flex flex-col justify-center ">
+            <div className="w-full md:w-2/3 flex flex-col justify-center">
               <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
                 About Me
               </h1>
@@ -47,16 +48,19 @@ export default function About() {
             </h2>
             <p className="mt-4 text-lg text-gray-600 dark:text-gray-50">
               From a curious learner to an aspiring developer, join Atiq’s
-              journey through the ever-evolving world of programming
+              journey through the ever-evolving world of programming.
             </p>
           </div>
           <div className="space-y-12">
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/3">
-                <img
+                <Image
                   src="/3.jpeg"
                   alt="Atiq as a beginner"
                   className="w-full rounded-lg shadow-lg"
+                  width={400}
+                  height={300}
+                  priority
                 />
               </div>
               <div className="md:w-2/3 md:pl-8 mt-8 md:mt-0">
@@ -77,10 +81,13 @@ export default function About() {
 
             <div className="flex flex-col md:flex-row-reverse items-center">
               <div className="md:w-1/3">
-                <img
+                <Image
                   src="/1.png"
                   alt="Atiq learning new skills"
                   className="w-full rounded-lg shadow-lg"
+                  width={400}
+                  height={300}
+                  priority
                 />
               </div>
               <div className="md:w-2/3 md:pr-8 mt-8 md:mt-0">
@@ -91,7 +98,7 @@ export default function About() {
                   After mastering the basics, Atiq’s thirst for knowledge grew.
                   He began exploring more complex topics such as data
                   structures, algorithms, and enhanced web development
-                  framework's like Next.js etc . Enrolling in online courses and
+                  frameworks like Next.js. Enrolling in online courses and
                   attending coding bootcamps, Atiq quickly expanded his skill
                   set, taking on freelance projects to apply his knowledge in
                   real-world scenarios.
@@ -101,10 +108,13 @@ export default function About() {
 
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/3">
-                <img
+                <Image
                   src="/2.png"
                   alt="Atiq working on a big project"
                   className="w-full rounded-lg shadow-lg"
+                  width={400}
+                  height={300}
+                  priority
                 />
               </div>
               <div className="md:w-2/3 md:pl-8 mt-8 md:mt-0">
@@ -112,7 +122,7 @@ export default function About() {
                   Taking on Challenges
                 </h3>
                 <p className="mt-4 text-gray-600 dark:text-gray-50">
-                  With several Languages Knowledge,Atiq begin tackling more
+                  With extensive language knowledge, Atiq began tackling more
                   significant challenges. Atiq continued to push his limits,
                   always looking for opportunities to learn and grow. His
                   journey wasn’t without its setbacks, but each obstacle was a
@@ -123,10 +133,13 @@ export default function About() {
 
             <div className="flex flex-col md:flex-row-reverse items-center">
               <div className="md:w-1/3">
-                <img
+                <Image
                   src="/4.jpeg"
                   alt="Atiq mentoring others"
                   className="w-full rounded-lg shadow-lg"
+                  width={400}
+                  height={300}
+                  priority
                 />
               </div>
               <div className="md:w-2/3 md:pr-8 mt-8 md:mt-0">
