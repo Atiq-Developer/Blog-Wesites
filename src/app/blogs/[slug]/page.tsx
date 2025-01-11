@@ -2,19 +2,20 @@ import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import CommentBox from "@/components/comment";
-
-interface BlogPostParams {
-  params: { slug: string };
-}
+import { InferGetStaticPropsType } from "next";
 
 export async function generateStaticParams() {
   const blogs = await client.fetch(
     `*[_type == "blog"] { "slug": slug.current }`
   );
-  return blogs.map((blog: { slug: string }) => ({ slug: blog.slug }));
+  return blogs.map((blog: { slug: string }) => ({
+    params: { slug: blog.slug },
+  }));
 }
 
-export default async function BlogPost({ params }: BlogPostParams) {
+export default async function BlogPost({
+  params,
+}: InferGetStaticPropsType<typeof generateStaticParams>) {
   const { slug } = params;
 
   const blog = await client.fetch(
