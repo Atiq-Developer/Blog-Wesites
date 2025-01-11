@@ -21,7 +21,6 @@ const Blog = async () => {
       "image": titleImage.asset->url,
       smallDescription,
       content,
-      authorName,
     }`
   );
 
@@ -64,7 +63,7 @@ const Blog = async () => {
                         className="rounded-full"
                       />
                       <p className="ml-3 text-lg italic text-gray-700 dark:text-gray-300">
-                        By{" "}
+                        By
                         <span className="text-[16px]">
                           Muhammad Atiq Ur Rehman
                         </span>
